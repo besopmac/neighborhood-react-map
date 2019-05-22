@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import logo from './assets/logo-foursquare.png';
 import './App.css';
 
 import { load_google_maps, load_places } from './utils';
@@ -62,6 +63,10 @@ class App extends Component {
 
       this.setState({ filterVenues: this.venues });
     })
+    .catch(error => {
+      console.log(error);
+      alert('Error loading page...');
+    })
   }
 
   listItemClick = (venue) => {
@@ -95,6 +100,8 @@ class App extends Component {
     return (
       <div>
         <div id="sidebar">
+          <div id="errorMap" className="error-box">There is something wrong with Google Maps API</div>
+
           <h1 className="titulo"><span>Are you hungry?</span> Find yummy foods around Rio de Janeiro</h1>
           <input tabIndex="1" className="input-filter" placeholder="Type for filter on map..." value={this.state.query} onChange={(e) => { this.filterVenues(e.target.value) }} />
 
@@ -105,6 +112,8 @@ class App extends Component {
               </div>
             ))
           }
+
+          <p className="copyright"><img src={logo} alt="Foursquare Logo" /> Powered by FourSquare</p>
         </div>
         
         <div id="map" tabIndex="0"></div>
