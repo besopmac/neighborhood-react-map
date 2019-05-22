@@ -1,33 +1,93 @@
-.App {
-  text-align: center;
+* {
+  box-sizing: border-box;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+#map {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
 }
 
-.App-link {
-  color: #61dafb;
+#sidebar {
+  top: 0;
+  left: 0;
+  z-index: 100;
+  height: 100vh;
+  color: #fff;
+  padding: 30px;
+  position: fixed;
+  overflow-y: auto;
+  width: calc(30% - 30px);
+  background-color: #333;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.venue-item {
+  padding: 10px;
+  margin: 10px 0;
+  cursor: pointer;
+  font-size: .9rem;
+  transition: all .2s ease-in;
+  border: 1px solid rgba(255, 255, 255, .1);
+}
+
+.venue-item:hover {
+  color: yellow;
+}
+
+.venue-item:last-of-type {
+  margin-bottom: 20px;
+}
+
+.titulo {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.titulo span {
+  display: block;
+  color: yellow;
+  font-size: .8rem;
+  text-transform: uppercase;
+}
+
+.input-filter {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  margin-top: 20px;
+}
+
+@media screen and (max-width: 420px) {
+  #map {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
   }
-  to {
-    transform: rotate(360deg);
+  
+  #sidebar {
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px;
+    position: fixed;
+    overflow: hidden; 
+    max-height: 200px;
+    background-color: #333;
+    box-shadow: 0 -5px 10px 10px rgba(0, 0, 0, .5);
+  }
+
+  .venue-item {
+    display: none;
+  }
+
+  .input-filter {
+    margin-top: 10px;
   }
 }
